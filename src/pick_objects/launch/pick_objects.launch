@@ -3,5 +3,13 @@
  <!-- The pick_objects node -->
   <node name="pick_objects" type="pick_objects_node" pkg="pick_objects" output="screen">
   </node>
+  
+  <param name="pick_up_goal_x" value="-3" />
+  <param name="pick_up_goal_y" value="2" />
+  <param name="pick_up_goal_w" value="1" />
+  
+  <param name="drop_off_goal_x" value="-4" />
+  <param name="drop_off_goal_y" value="4" />
+  <param name="drop_off_goal_w" value="1" />
 
 </launch>

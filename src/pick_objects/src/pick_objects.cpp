@@ -11,6 +11,7 @@ int main(int argc, char** argv){
 
   //tell the action client that we want to spin a thread by default
   MoveBaseClient ac("move_base", true);
+  
 
   // Wait 5 sec for move_base action server to come up
   while(!ac.waitForServer(ros::Duration(5.0))){
@@ -20,19 +21,29 @@ int main(int argc, char** argv){
   // set up goal locations: pick_up and drop_off
   move_base_msgs::MoveBaseGoal pick_up_goal;
   move_base_msgs::MoveBaseGoal drop_off_goal;
+  
+    // Initialize node handle:
+  ros::NodeHandle nh;
+  nh.getParam("pick_up_goal_x", pick_up_goal.target_pose.pose.position.x);
+  nh.getParam("pick_up_goal_y", pick_up_goal.target_pose.pose.position.y);
+  nh.getParam("pick_up_goal_w", pick_up_goal.target_pose.pose.orientation.w);
+  
+  nh.getParam("drop_off_goal_x", drop_off_goal.target_pose.pose.position.x);
+  nh.getParam("drop_off_goal_x", drop_off_goal.target_pose.pose.position.y);
+  nh.getParam("drop_off_goal_x", drop_off_goal.target_pose.pose.orientation.w);
 
   // set up the frame parameters
   pick_up_goal.target_pose.header.frame_id = "map";
   drop_off_goal.target_pose.header.frame_id = "map";
 
   // Define a position and orientation for the robot to reach
-  pick_up_goal.target_pose.pose.position.x = -3.0;
-  pick_up_goal.target_pose.pose.position.y = 2.0;
-  pick_up_goal.target_pose.pose.orientation.w = 1.0;
+  //pick_up_goal.target_pose.pose.position.x = -3.0;
+  //pick_up_goal.target_pose.pose.position.y = 2.0;
+  //pick_up_goal.target_pose.pose.orientation.w = 1.0;
   
-  drop_off_goal.target_pose.pose.position.x = -4.0;
-  drop_off_goal.target_pose.pose.position.y = -4.0;
-  drop_off_goal.target_pose.pose.orientation.w = 1.0;
+  //drop_off_goal.target_pose.pose.position.x = -4.0;
+  //drop_off_goal.target_pose.pose.position.y = -4.0;
+  //drop_off_goal.target_pose.pose.orientation.w = 1.0;
 
   while (true) {
     // Send the goal position and orientation for the robot to reach
