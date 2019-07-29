@@ -1,11 +1,12 @@
-# Map my world
+# Home service robot
 
-A fourth project from Udacity Robotics Software Engineer Nanodegree.
-A robot performs RTAB-MAP SLAM using odometry and laser scans.
+A fifth and final project from Udacity Robotics Software Engineer Nanodegree.
+A robot moves in environment and pick virtual objects, from pick-up zone to drop-off zone.
+
 
 <p align="center">
-  <img width="920" height="600" src="images/rtab-slam.gif">
-  <br>Robot performing RTAB-Map Slam
+  <img width="920" height="600" src="images/home_service.gif">
+  <br>Robot 
 </p>
 
 
@@ -33,62 +34,29 @@ git checkout master
 cd path_to_my_workspace/workspace_name
 catkin_make
 source devel/setup.bash
-```
-* Run ROS:
-```sh
-export GAZEBO_MODEL_PATH=path_to_my_workspace/workspace_name/src/my_robot/models
-roslaunch my_robot world.launch
-```
-* In another terminal run rtab-map:
-```sh
-cd path_to_my_workspace/workspace_name
-source devel/setup.bash
-roslaunch my_robot mapping.launch
-```
-* If you want to use Teleop in third terminal write:
-```sh
-cd path_to_my_workspace/workspace_name
-source devel/setup.bash
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py
-```
-* Final map (database) is stored in default location:
-```sh
-~/.ros/rtabmap.db
-```
 
-## World
-A single floor with many details (furniture, plants, portraits, boxes etc.)
-
-<p align="center">
-  <img width="460" height="300" src="images/world_global.png">
-  <br>World - a global overview
-</p>
-
-<p align="center">
-  <img width="460" height="300" src="images/world_local_1.png">
-  <br>World - local view
-</p>
-
-<p align="center">
-  <img width="460" height="300" src="images/world_local_2.png">
-  <br>World - local view #2
-</p>
+* In every script change path to gazebo models to: path_to_my_workspace/workspace_name/src/my_robot/models
+ and set path to world file (path_to_my_workspace/workspace_name/src/my_robot/worlds/my_world.world)
 
 
-## Nodes
-Three nodes are essential for where am I:
-* `rtabmap` - performs slam  ([RTAB-Map](http://wiki.ros.org/rtabmap_ros))
+## Scripts
+The project contains 5 scripts:
+* 'test_slam.sh' to test SLAM algorithm (the robot is controled via teleop)
+* 'test_navigation.sh' which is used to set 2D nav goals for robot in rviz
+* 'pick_objects.sh' which is used to automatically move robot between two positions: pick-up zone and drop-off zone. 
+* 'add_makrers.sh' which is used to display virtual objects in rviz
+* 'home_service.sh' which is used to perform algorithm of picking of objects and moving from pick-up zone to drop-off zone.
 
-## Params
-In order to tune rtab map use parameters from package wiki and paste them to package launch file (mapping.launch).
+** To run scripts remember to set proper path as described in the end of the _How to use_ section
 
-## rtabmap-databaseViewer
-It allows for complete analysis of mapping session.
+## Picking algorithm (in home_service.sh)
 
-<p align="center">
-  <img width="460" height="300" src="images/rtab-map-database-viewer.png">
-  <br>Mapping results
-</p>
+* Initially show the marker at the pickup zone
+* Hide the marker once your robot reaches the pickup zone
+* Wait 5 seconds to simulate a pickup
+* Show the marker at the drop off zone once your robot reaches it
+* When robot leaves drop off zone show marker once again in the pick up zone
+* Go to beginning
 
 
 ## License
@@ -97,7 +65,7 @@ The contents of this repository are covered under the [MIT License](./LICENSE.tx
 
 ## Contributing
 
-1. Fork it (<https://github.com/michLab/project_4_mapping.git>)
+1. Fork it (<https://github.com/michLab/project_5_home_service_robot.git>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
