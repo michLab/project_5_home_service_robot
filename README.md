@@ -34,6 +34,7 @@ git checkout master
 cd path_to_my_workspace/workspace_name
 catkin_make
 source devel/setup.bash
+```
 
 * In every script change path to gazebo models to: path_to_my_workspace/workspace_name/src/my_robot/models
  and set path to world file (path_to_my_workspace/workspace_name/src/my_robot/worlds/my_world.world)
