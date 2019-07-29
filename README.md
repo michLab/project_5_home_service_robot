@@ -48,7 +48,7 @@ The project contains 5 scripts:
 * 'add_makrers.sh' which is used to display virtual objects in rviz
 * 'home_service.sh' which is used to perform algorithm of picking of objects and moving from pick-up zone to drop-off zone.
 
-** To run scripts remember to set proper path as described in the end of the _How to use_ section **
+**To run scripts remember to set proper path as described in the end of the _How to use_ section**
 
 ## Picking algorithm (in home_service.sh)
 
