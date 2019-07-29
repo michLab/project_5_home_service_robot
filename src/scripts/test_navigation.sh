@@ -8,7 +8,7 @@ xterm -e " export GAZEBO_MODEL_PATH=/home/workspace/catkin_ws/src/my_robot/model
 sleep 5
 
 # Launch amcl:
-xterm -e " roslaunch turtlebot_gazebo amcl_demo.launch map_file:=/home/workspace/catkin_ws/src/map/map.yaml " &
+xterm -e " roslaunch turtlebot_gazebo amcl_demo.launch map_file:=/home/workspace/catkin_ws/src/map/map.yaml initial_pose_x:=-6.0 initial_pose_a:=-1.5708" &
 sleep 5
 
 # Launch rviz:

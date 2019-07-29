@@ -12,7 +12,10 @@ xterm -e " roslaunch turtlebot_gazebo amcl_demo.launch map_file:=/home/workspace
 sleep 5
 
 # Launch rviz:
-xterm -e " roslaunch turtlebot_rviz_launchers view_navigation.launch " &
+xterm -e " roslaunch add_markers view_navigation.launch " &
+
+# Launch pick_objects node:
+xterm -e " roslaunch add_markers add_markers.launch " &
 
 # Launch pick_objects node:
 xterm -e " roslaunch pick_objects pick_objects.launch " &
